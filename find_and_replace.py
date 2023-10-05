@@ -1,9 +1,24 @@
+#!/usr/bin/python3
+from math import factorial
 import itertools
+from tqdm import tqdm
 
 #alphabet = [ "a", "b", "c", "d" ]
 
 #w1 = "abcd"
 #w2 = "deed"
+
+def num_combinations(n, r):
+    if r < n // 2:
+        r = n - r
+    
+    num = 1
+    for i in range(r + 1, n + 1):
+        num *= i
+    
+    num //= factorial(n - r)
+
+    return num
 
 w1 = "abcde"
 w2 = "backup"
@@ -20,7 +35,7 @@ alphabet.sort()
 rules = list()
 
 for rule_len_left in range (1, 2):
-    for rule_len_right in range (1, 2):
+    for rule_len_right in range (1, 3):
         for rule_left_tuple in itertools.combinations_with_replacement(alphabet, rule_len_left):
             for rule_right_tuple in itertools.combinations_with_replacement(alphabet, rule_len_right):
                 if rule_left_tuple != rule_right_tuple:
@@ -29,7 +44,7 @@ for rule_len_left in range (1, 2):
 for n in range(1, len(w1) + 1):
     print("Checking {} step solutions".format(n))
     
-    for rules_n in itertools.combinations(rules, n):
+    for rules_n in tqdm(itertools.combinations(rules, n), total = num_combinations(len(rules), n)):
         winner_permutation_count = 0
         #print("Trying rule set: {}".format(rules_n))
 
