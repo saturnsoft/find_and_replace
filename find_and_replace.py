@@ -2,8 +2,11 @@ import itertools
 
 #alphabet = [ "a", "b", "c", "d" ]
 
-w1 = "abcd"
-w2 = "deed"
+#w1 = "abcd"
+#w2 = "deed"
+
+w1 = "abcde"
+w2 = "backup"
 
 alphabet = list()
 for c in w1:
