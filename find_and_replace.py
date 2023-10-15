@@ -13,6 +13,7 @@ w2 = "beepy"
 
 (('d', 'e'), ('ab', 'bd'), ('ce', 'ep'))
 
+# number of combinations (without replacement), that is, n! / r! / (n-r)!
 def num_combinations(n, r):
     if r < n // 2:
         r = n - r
