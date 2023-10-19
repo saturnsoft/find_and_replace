@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import curses
 
 def toggle_lock(c: str) -> str:
@@ -35,7 +36,7 @@ while True:
         elif k == "w":
             w = ""
             for i, c in enumerate(word):
-                if lock[i] != "X":
+                if lock[i] != "▒":
                     w += add_char(c, 1)
                 else:
                     w += c
@@ -53,4 +54,6 @@ while True:
 
     window.addstr(1, 1, word)
     window.addstr(2, 1, lock)
+
+
 
